@@ -15,7 +15,6 @@ const ProductTable = () => {
       ? JSON.parse(savedPagination)
       : { page: 0, pageSize: 20 };
   });
-
   useEffect(() => {
     localStorage.setItem("paginationModel", JSON.stringify(paginationModel));
   }, [paginationModel]);
@@ -43,12 +42,12 @@ const ProductTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const { products, categories } = await fetchProducts(
+      const { products, categories, totalResults } = await fetchProducts(
         paginationModel.page + 1
       );
       setAllProducts(products);
       setFilteredProducts(products);
-      rowCountRef.current = products.length;
+      rowCountRef.current = totalResults;
       setCategories(categories);
       setLoading(false);
     };

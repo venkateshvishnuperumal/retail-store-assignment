@@ -8,7 +8,7 @@ export const fetchProducts = async (page) => {
     const { data } = await axios.get(`${API_BASE}?page=${page}`);
     const products = data.products;
     const categoryMap = {};
-
+    const totalResults = parseInt(data.totalResults, 10);
     products.forEach((product) => {
       const mainCategory = product.main_category || "Others";
       const level1 = product.category_level_1 || "Others";
@@ -33,7 +33,7 @@ export const fetchProducts = async (page) => {
       })),
     }));
 
-    return { products, categories: parsedCategories };
+    return { products, categories: parsedCategories, totalResults };
   } catch (error) {
     console.error("Error fetching products:", error);
     return { products: [], categories: [] };
