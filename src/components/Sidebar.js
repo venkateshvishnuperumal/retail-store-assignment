@@ -35,6 +35,7 @@ const Sidebar = ({ categories, onCategoryChange }) => {
       }}
       variant="permanent"
       anchor="left"
+      style={{ cursor: "pointer" }}
     >
       <div style={{ padding: "20px" }}>
         <Typography variant="h6">Filter by Category</Typography>

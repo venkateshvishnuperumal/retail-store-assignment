@@ -20,8 +20,12 @@ const CartPage = () => {
     setOrderSuccess(true);
   };
 
+  const handleToHome = () => {
+    navigate("/");
+  };
+
   const handleGoToShopping = () => {
-    navigate("/"); // Adjust the path to match your shopping page route
+    navigate("/");
   };
 
   return (
@@ -64,6 +68,10 @@ const CartPage = () => {
             disabled={cartItems.length === 0}
           >
             Place Order
+          </Button>
+
+          <Button variant="outlined" color="primary" onClick={handleToHome}>
+            Home
           </Button>
         </>
       )}
